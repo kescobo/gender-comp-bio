@@ -1,1 +1,1 @@
-# gender-comp-bio
+# Gender in Computational Biology
