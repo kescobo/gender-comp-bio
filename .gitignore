@@ -1,2 +1,5 @@
 *.gz
-data/*.xml
+data/pubs/*.json
+data/pubs/*.xml
+data/pubs/*.csv
+data/pubs/*.txt

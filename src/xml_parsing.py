@@ -96,73 +96,64 @@ def score_authors(author_list):
     if list_length > 1:
         last = author_list[-1]
 
-
     return first, last, second, penultimate, others
 
 
-col_names = ["Date", "Journal", "First Author", "Last Author", "Second Author", "Penultimate Author", "Other Authors"]
+def write_names_to_file(in_file, out_file):
+    col_names = ["Date", "Journal", "Author Name", "Position"]
+    df = pd.DataFrame(columns=col_names)
 
-df = pd.DataFrame()
+    with open(out_file, 'a+') as out:
+        df.to_csv(out, columns = col_names)
 
-for article in iter_parse_pubmed('github_pubs.xml'):
-    first, last, second, penultimate, others = score_authors(article.authors)
-    first = first.first_name
-    try:
-        last = last.first_name
-    except:
-        pass
-    try:
-        second = second.first_name
-    except:
-        pass
-    try:
-        penultimate = penultimate.first_name
-    except:
-        pass
-    try:
-        others = [x.first_name for x in others]
-    except:
-        pass
-
-    row = pd.Series([article.pubdate, article.journal, first, last, second, penultimate, others],
-                    name=article.pmid, index=col_names)
-    df = df.append(row)
-
-print(df)
-
-unique_names = set([])
-
-def get_unique_names(xml_file, name_set=None):
-    new_names = []
-    if not name_set:
-        name_set = set([])
-
-    if len(new_names) % 1000 == 0:
-        print("made it through {}".format(len(new_names)))
-    for article in iter_parse_pubmed(xml_file):
+    counter = 0
+    for article in iter_parse_pubmed(in_file):
         first, last, second, penultimate, others = score_authors(article.authors)
-
         if first:
-            fa = first.first_name
+            row = pd.Series([article.pubdate, article.journal, first.first_name, "first"], name=article.pmid, index=col_names)
+            df = df.append(row)
         else:
-            fa = None
-        if last:
-            la = last.first_name
-        else:
-            la = None
-        if second:
-            sa = second.first_name
-        else:
-            sa = None
-        if penultimate:
-            pa = penultimate.first_name
-        else:
-            pa = None
-        if others:
-            oa = [o.first_name for o in others]
-        else:
-            oa = []
+            continue
+        try:
+            row = pd.Series([article.pubdate, article.journal, last.first_name, "last"], name=article.pmid, index=col_names)
+            df = df.append(row)
+        except:
+            pass
+        try:
+            row = pd.Series([article.pubdate, article.journal, second.first_name, "second"], name=article.pmid, index=col_names)
+            df = df.append(row)
+        except:
+            pass
+        try:
+            row = pd.Series([article.pubdate, article.journal, penultimate.first_name, "penultimate"], name=article.pmid, index=col_names)
+            df = df.append(row)
+        except:
+            pass
+        try:
+            for x in others:
+                row = pd.Series([article.pubdate, article.journal, x.first_name, "other"], name=article.pmid, index=col_names)
+                df = df.append(row)
+        except:
+            pass
 
-        new_names.extend([fa, la, sa, pa, *oa])
 
-    return name_set.union(set(new_names))
+        if counter % 1000 == 0:
+            print(counter)
+            with open(out_file, 'a+') as out:
+                df.to_csv(out, columns = col_names, header=False)
+            df = pd.DataFrame(columns=col_names)
+        counter +=1
+    with open(out_file, 'a+') as out:
+        df.to_csv(out, columns = col_names, header=False)
+
+
+
+# write_names_to_file("git.xml", "git_authors2.csv")
+# write_names_to_file("comp.xml", "comp_authors2.csv")
+# write_names_to_file("bio.xml", "bio_authors2.csv")
+# write_names_to_file("dev.xml", "dev_authors.csv")
+# write_names_to_file("eco.xml", "eco_authors.csv")
+write_names_to_file("vanity.xml", "vanity.csv")
+write_names_to_file("vanitycomp.xml", "vanitycomp.csv")
+write_names_to_file("plosbio.xml", "plosbio.csv")
+write_names_to_file("ploscomp.xml", "ploscomp.csv")
