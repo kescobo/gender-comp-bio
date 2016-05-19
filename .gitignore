@@ -1,2 +1,5 @@
 *.gz
+data/*.json
 data/*.xml
+data/*.csv
+data/*.txt
