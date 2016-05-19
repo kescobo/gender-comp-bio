@@ -1,8 +1,10 @@
 import os
+import datetime
 from lxml.etree import iterparse
 import pandas as pd
+from genderize import Genderize
 
-
+os.listdir()
 os.chdir("../data/")
 
 class Article(object):
