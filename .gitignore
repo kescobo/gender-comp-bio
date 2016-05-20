@@ -1,5 +1,5 @@
 *.gz
-data/*.json
-data/*.xml
-data/*.csv
-data/*.txt
+data/pubs/*.json
+data/pubs/*.xml
+data/pubs/*.csv
+data/pubs/*.txt
