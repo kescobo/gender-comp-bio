@@ -2,10 +2,6 @@ import os
 import datetime
 from lxml.etree import iterparse
 import pandas as pd
-from genderize import Genderize
-
-os.listdir()
-os.chdir("../data/")
 
 class Article(object):
     """Container for publication info"""
@@ -149,13 +145,6 @@ def write_names_to_file(in_file, out_file):
         df.to_csv(out, columns = col_names, header=False)
 
 
-
-# write_names_to_file("git.xml", "git_authors2.csv")
-# write_names_to_file("comp.xml", "comp_authors2.csv")
-# write_names_to_file("bio.xml", "bio_authors2.csv")
-# write_names_to_file("dev.xml", "dev_authors.csv")
-# write_names_to_file("eco.xml", "eco_authors.csv")
-write_names_to_file("vanity.xml", "vanity.csv")
-write_names_to_file("vanitycomp.xml", "vanitycomp.csv")
-write_names_to_file("plosbio.xml", "plosbio.csv")
-write_names_to_file("ploscomp.xml", "ploscomp.csv")
+if __name__ == '__main__':
+    import sys
+    write_names_to_file(sys.argv[1], sys.argv[2])
