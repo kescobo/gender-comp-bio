@@ -15,14 +15,14 @@ def get_unique_names(pubs_csv):
 def get_gender_detector(names, outfile):
     gender_dict = {}
     for name in names:
-    try:
-        gender = detector.guess(name)
-        gender_dict[name] = gender
-    except:
-        print(name)
+        try:
+            gender = detector.guess(name)
+            gender_dict[name] = gender
+        except:
+            print(name)
 
-    with open(outfile, "w+") as outfile:
-        outfile.write(json.dumps(gender_dict, indent=4))
+    with open(outfile, "w+") as f:
+        f.write(json.dumps(gender_dict, indent=4))
 
 
 def get_genderize(names, outfile):
@@ -52,16 +52,20 @@ def get_genderize(names, outfile):
 
 
 
-    with open(outfile, "w+") as outfile:
-        outfile.write(json.dumps(names_dict, indent=4))
+    with open(outfile, "w+") as f:
+        f.write(json.dumps(names_dict, indent=4))
 
 
 def get_genderAPI(names, outfile):
     genderAPI_dict = {}
+    counter = 0
 
-    for i in range(counter, len(all_names), 20):
-        names = all_names[i:i+20]
-        query = ";".join(names)
+    for i in range(counter, len(names), 20):
+        counter += 20
+        if counter %1000 == 0:
+            print counter
+        n = names[i:i+20]
+        query = ";".join(n)
 
         data = json.load(urllib2.urlopen("https://gender-api.com/get?key={}&name={}".format(genderAPI_key, query)))
         for r in data['result']:
@@ -78,8 +82,8 @@ def get_genderAPI(names, outfile):
             genderAPI_dict[n] = {"gender":g, "probability":p, "count": c}
 
 
-    with open("../data/pubs/genderAPI_genders.json", "w+") as outfile:
-        outfile.write(json.dumps(genderAPI_dict, indent=4))
+    with open(outfile, "w+") as f:
+        f.write(json.dumps(genderAPI_dict, indent=4))
 
 
 if __name__ == '__main__':

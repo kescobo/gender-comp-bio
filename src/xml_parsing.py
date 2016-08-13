@@ -37,16 +37,17 @@ class Author(object):
             self.initials = None
 
 
-
 def iter_parse_pubmed(xml_file):
     # get an iterable
     for event, element in iterparse(xml_file, tag="PubmedArticle", events=("end",)):
 
         pmid = element.xpath('.//PMID')[0].text
-        pubdate = datetime.date(
-            int(element.xpath('.//DateCreated/Year')[0].text), # year
-            int(element.xpath('.//DateCreated/Month')[0].text), # month
-            int(element.xpath('.//DateCreated/Day')[0].text), #day
+
+
+        pubdate = (
+            element.xpath('.//DateCreated/Year')[0].text, # year
+            element.xpath('.//DateCreated/Month')[0].text, # month
+            element.xpath('.//DateCreated/Day')[0].text, #day
             )
 
 
@@ -142,7 +143,7 @@ def score_authors(author_list):
 
 
 def write_names_to_file(in_file, out_file, pub_type="pubmed"):
-    col_names = ["Date", "Journal", "Author Name", "Position"]
+    col_names = ["Date", "Journal", "Author First Name", "Author Last Name", "Author Initials", "Position", "Title"]
     df = pd.DataFrame(columns=col_names)
 
     with open(out_file, 'w+') as out:
@@ -160,28 +161,28 @@ def write_names_to_file(in_file, out_file, pub_type="pubmed"):
     for article in articles:
         first, last, second, penultimate, others = score_authors(article.authors)
         if first:
-            row = pd.Series([article.pubdate, article.journal, first.first_name, "first"], name=article.article_id, index=col_names)
+            row = pd.Series([article.pubdate, article.journal, first.first_name, first.last_name, first.initials, "first", article.title], name=article.article_id, index=col_names)
             df = df.append(row)
         else:
             continue
         try:
-            row = pd.Series([article.pubdate, article.journal, last.first_name, "last"], name=article.article_id, index=col_names)
+            row = pd.Series([article.pubdate, article.journal, last.first_name, last.last_name, last.initials, "last", article.title], name=article.article_id, index=col_names)
             df = df.append(row)
         except:
             pass
         try:
-            row = pd.Series([article.pubdate, article.journal, second.first_name, "second"], name=article.article_id, index=col_names)
+            row = pd.Series([article.pubdate, article.journal, second.first_name, second.last_name, second.initials, "second", article.title], name=article.article_id, index=col_names)
             df = df.append(row)
         except:
             pass
         try:
-            row = pd.Series([article.pubdate, article.journal, penultimate.first_name, "penultimate"], name=article.article_id, index=col_names)
+            row = pd.Series([article.pubdate, article.journal, penultimate.first_name, penultimate.last_name, penultimate.initials, "penultimate", article.title], name=article.article_id, index=col_names)
             df = df.append(row)
         except:
             pass
         try:
             for x in others:
-                row = pd.Series([article.pubdate, article.journal, x.first_name, "other"], name=article.article_id, index=col_names)
+                row = pd.Series([article.pubdate, article.journal, x.first_name, x.last_name, x.initials, "other", article.title], name=article.article_id, index=col_names)
                 df = df.append(row)
         except:
             pass

@@ -1,5 +1,6 @@
 *.gz
 data/pubs/*.json
-data/pubs/*.xml
-data/pubs/*.csv
 data/pubs/*.txt
+*.pyc
+api_keys.py
+src/__pychache__

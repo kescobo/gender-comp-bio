@@ -9,28 +9,11 @@ This dataset contains all english language publications under the MeSH term "Bio
 ## Computational Biology pubs 1997-2014 (`comp`)
 Same as above, except using MeSH term "Computational Biology". Only uses papers where this is is a major term. Date range was selected because this MeSH term was introduced in 1997, and the assignments of this term seem somewhat sparse in 2015 and 2016. Search term: `("Computational Biology"[Majr]) NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography" [Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
 
-## Ecology pubs 1997-2014 (`eco`)
-Same as above, except using MeSH term "Ecology". Search term: `(Ecology[Mesh]) NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography" [Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
+## Curated list of authors with known enders (`med`)
+Data set of > 3000 authors with known genders from Filardo et. al. *BMJ* (2016) - doi: http://dx.doi.org/10.1136/bmj.i847
 
-## Developmental Biology pubs 1997-2014 (`dev`)
-Same as above, except using MeSH term "Developmental Biology". Only uses papers where this is is a major term. Search term: `("Developmental Biology"[Majr]) NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography" [Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
+## arXiv Quantitative Biology (`q-bio`)
+This dataset contains all preprints with the label “q-bio” from 2003 (when the section was introduced) to 2014. Downloaded on 10 June, 2016.
 
-## High Impact Biology Papers 1997-2014 (`vanity`)
-Biology papers published in prestige journals *Nature*, *Science* or *Cell* between 1997 and 2014. Search term:
-`"Biology"[Mesh] AND ("Nature"[Journal] OR "Science"[Journal] OR "Cell"[Journal]) NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography"[Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
-
-## High Impact Computational Biology Papers 1997-2014 (`vanitycomp`)
-Computational Biology papers published in prestige journals *Nature*, *Science* or *Cell* between 1997 and 2014. Search term:
-`"Computational Biology"[Majr] AND ("Nature"[Journal] OR "Science"[Journal] OR "Cell"[Journal]) NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography"[Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
-
-## PLoS Comparison
-Papers published in specialty PLoS journals:
-
-`plosbio`:
-`"PLoS Biol"[Journal] NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography"[Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
-
-`ploscomp`:
-`"PLoS Comput Biol"[Journal] NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography"[Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
-
-## Pubs with github (`git`)
-All publications that contain "github" in the title or abstract, again excluding reviews, news etc. Search term: `github[title/abstract] NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography"[Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
+## arXiv CS (`cs`)
+This dataset contains all preprints with the label “cs” from 2003 to 2014. Downloaded on 10 June, 2016.
