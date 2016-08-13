@@ -2,11 +2,7 @@
 
 The xml files containing the data are evidently too large to upload to github. Use the search terms in pubmed, then click `send to` (in the upper right of results page), choose `file` for destination and `XML` for format. Add them to the `data/pubs/` folder.
 
-Alternatively, the Pubmed datasets can be found here: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.58990.svg)](http://dx.doi.org/10.5281/zenodo.58990)
-
-
-Arxiv datasets can be found here: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.60088.svg)](http://dx.doi.org/10.5281/zenodo.60088)
-
+Alternatively, the Pubmed datasets can be found here: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.58990.svg)](http://dx.doi.org/10.5281/zenodo.58990), and the arXiv datasets can be found here: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.60088.svg)](http://dx.doi.org/10.5281/zenodo.60088)
 
 ## Biology pubs 1997-2014 (`bio`)
 This dataset contains all english language publications under the MeSH term "Biology" published between 1997 and 2014, excluding many non-primary sources. Search term: `("Biology"[Mesh]) NOT (Review[ptyp] OR Comment[ptyp] OR Editorial[ptyp] OR Letter[ptyp] OR Case Reports[ptyp] OR News[ptyp] OR "Biography" [Publication Type]) AND ("1997/01/01"[PDAT] : "2014/12/31"[PDAT]) AND english[language]`
