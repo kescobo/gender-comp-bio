@@ -1,16 +1,16 @@
 using DataFrames,
         JSON
 
-function importauthors(filename::ASCIIString, setname::ASCIIString)
+function importauthors(filename::String, setname::String)
     df = readtable(filename)
     rename!(df, :x, :ID)
     df[:Dataset] = @pdata([setname for x in 1:length(df[:ID])])
-    df[:Date] = @data([Date(d) for d in df[:Date]])
+    df[:Date] = @data([Date(replace(d, r"['\(\)\s]", ""), "y,m,d") for d in df[:Date]])
     return df
 end
 
 
-function getgenderprob(df::DataFrame, g::ASCIIString, s::Symbol)
+function getgenderprob(df::DataFrame, g::String, s::Symbol)
     genders = JSON.parsefile(g)
     ps = DataArray{Float64}([])
     cs = DataArray{Int32}([])
