@@ -1,6 +1,9 @@
 *.gz
-data/pubs/*.json
-data/pubs/*.txt
+data/*.json
+data/*.csv
+data/*.txt
+data/*.xml
 *.pyc
 api_keys.py
 src/__pychache__
+.DS_Store
