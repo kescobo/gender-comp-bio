@@ -291,6 +291,10 @@ We used ordinary least squares regression analyses on IF and $P_{female}$ using 
   A: Mean probability that an author is female for every journal that had at least 1000 authors in our dataset. Grey bars represent journals that have the words “Bioinformatics,” “Computational,” “Computer,” “System(s),” or “-omic(s)” in their title. Vertical line represents the median for female author representation. See also S1 Table. B: Mean probability that an author is female for articles in the “Bio” dataset (black dot) or in the “Comp” dataset (open square) for each journal that had at least 1000 authors plotted against the journals’ 2014 impact factor. Journals that had computational biology articles are included in both datasets. An ordinary least squares regression was performed for each dataset. Bio: $m = -0.00264$, $P_{Z>|z|} = 0.0022$. Comp: $m = -0.0007893406044121227$, $P_{Z>|z|} = 0.568$.}
   \label{fig2}
 \end{figure}
+\item Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black) or Computational Biology (grey). The bio dataset is inclusive of papers in the comp dataset. Error bars represent 95\% confidence intervals.
+\item Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black) or Computational Biology (grey). The bio dataset is inclusive of papers in the comp dataset. Error bars represent 95\% confidence intervals.
+\item Mean probability that an author is female for publications in a given year. Error bars represent 95\% confidence intervals.
+\item Mean probability that the first (F), second (S), penultimate (P) or other (O) author is female for publications where the last author is male ($P_{female}$ < 0.2) or female ($P_{female}$ > 0.8). Papers where the gender of the last author was uncertain or could not be determined were excluded. Error bars represent 95\% confidence intervals.
 
 \begin{figure}[!h]
   \caption{{\bf Figure 3}
@@ -314,6 +318,11 @@ We used ordinary least squares regression analyses on IF and $P_{female}$ using 
 \item Mean probability that an author in a given position is female for all preprints in the arXiv quantitative biology (black) or computer science (grey) categories between 2007 and 2014. Error bars represent 95\% confidence intervals.
 \item Mean probability of authors being female in arXiv preprints in a given year. Error bars represent 95\% confidence intervals. Slopes were determined using ordinary least squares regression. The slope for q-bio is slightly positive (p < 0.05), but the slope for cs is not.
 
+\item Number of primary publications per year indexed under the “Biology” MeSH term.
+\item Number of primary publications per year indexed with “Computational Biology” as a major MeSH term.
+\item Comparison of computational gender inference (black) with known genders (white) for the dataset from Filardo et. al. [12]. Grey represents the known proportion of female authors when excluding names for which the gender could not be computationally inferred. Error bars represent 95\% confidence intervals.
+\item Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black), Computational Biology (gray) or for those articles with Biology \textit{but not} Computational biology (white). Error bars represent 95\% confidence intervals.
+\item Mean probability that an author is female for articles in the “Bio” dataset (black) in the “Comp” dataset (white), or for articles in the Bio \textit{but not} Comp (gray) for each journal that had at least 1000 authors plotted against the journals’ 2014 impact factor. Excluding computational publications from the biology dataset does not substantially alter the correlation between impact factor and $P_{female}$.
 \subsection*{S1 Table: Proportion of Female Authors by Journal}
 
 $P_{female}$ for each journal with at least 1000 authors in the bio dataset. Journals identified as primarily computational are shaded grey.
@@ -322,5 +331,35 @@ Acknowledgements
 \section*{Acknowledgements}
 The authors would like to thank Markus Perl for the free use of Gender-API - contact@gender-api.com; Casper Strømgren for the free use of genderize.io info@genderize.io; Giovanni Filardo for sharing data [12]; Johanna Gutlerner, Marshall Thomas, Diane Lam, and other members of the Curriculum Fellows Program (CFP) at Harvard Medical School (HMS) for helpful feedback and discussions; and
 The HMS CFP and Educational Laboratory for resources and mentorship.
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{Figure1.pdf}
+  \caption{Gender Balance in PubMed-Indexed Publications}
+  \label{fig:Figure 1}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{Figure2.pdf}
+  \caption{Journal Based Analysis of Gender Balance}
+  \label{fig:Figure 2}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{Figure3.pdf}
+  \caption{Gender Balance in arXiv Preprints}
+  \label{fig:Figure 3}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{SuppFigure1.pdf}
+  \caption{Datasets and Gender Inference Validation}
+  \label{fig:S1 Figure}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[scale=0.9]{SuppFigure2.pdf}
+  \caption{Validation of PubMed Subsetting}
+  \label{fig:S2 Figure}
+\end{figure}
 
 \end{document}
