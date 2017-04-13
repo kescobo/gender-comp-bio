@@ -1,9 +1,8 @@
 *.gz
-data/*.json
-data/*.csv
-data/*.txt
-data/*.xml
+data/*
+!data/README.md
 *.pyc
 api_keys.py
 src/__pychache__
 .DS_Store
+scratch*
