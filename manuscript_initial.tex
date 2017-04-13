@@ -146,13 +146,20 @@ Although gender imbalance seems to be universal across all aspects of the scient
 To this end, we are interested in the gender balance in computational biology and how it compares to other areas of biology, since computational biology is a relatively young field at the disciplinary intersection between biology and computer science. We examined authorship on papers from Pubmed published between 1997 and 2014 and compared computational biology to biology in general. We found that in computational biology, there are fewer female authors overall, and fewer female authors in first and last authorship positions than in all biological fields combined. This is true across all years, though the gender gap has been narrowing, both in computational biology and in biology overall. A comparison to computer science papers shows that computational biology stands between biology and computer science in terms of gender equality.
 
 \section*{Results and Discussion}
-In order to determine if there is a difference in the gender of authors in computational biology compared to biology as a whole, we used data from Pubmed, a database of biology and biomedical publications administered by the US National Library of Medicine. Pubmed uses Medical Subject Heading (MeSH) terms to classify individual papers by subject. The MeSH term “Computational Biology” is a subset of “Biology” and was introduced in 1997, so we restricted our analysis to primary articles published after this date (see Supplementary Figure 1A-B, Materials and Methods).
+In order to determine if there is a difference in the gender of authors in computational biology compared to biology as a whole, we used data from Pubmed, a database of biology and biomedical publications administered by the US National Library of Medicine. Pubmed uses Medical Subject Heading (MeSH) terms to classify individual papers by subject. The MeSH term “Computational Biology” is a subset of “Biology” and was introduced in 1997, so we restricted our analysis to primary articles published after this date (see S1 Fig A-B, Materials and Methods).
 
 To determine the gender of authors, we used the web service Gender-API.com, which curates a database of first names and associated genders from government records as well as social media profiles. Gender-API searches provide information on the likely gender as well as confidence in the estimate based on the number of times a name appears in the database. We used bootstrap analysis to estimate the probability ($P_{female}$) that an author in a particular dataset is female as well as a 95\% confidence interval (see Materials and Methods)
 
-We validated this method by comparing it to a set of 2155 known author:gender pairs from the biomedical literature provided by Filardo et. al. \cite{Filardo2016} Filardo and colleagues manually determined the genders of the first authors for over 3000 papers by searching for authors’ photographs on institutional web pages or social media profiles like LinkedIn. We used our computational inference of gender for a subset of this data, which suggested $P_{female}$ = 0.373, 95\% CI = [0.350, 0.396], compared to the known gender, which gave $P_{female}$ = 0.360 (using the same bootstrap analysis, 95\% CI = [0.342, 0.379]) (Supplementary Figure 1C). Because Gender-API does not have information for a subset of names (43\% of unique names in our Biology dataset, representing 26.6\% of authors), these names are excluded from our analysis. In order to ensure that this was not skewing our analysis, we also determined the $P_{female}$ in Filardo et al.'s known gender dataset excluding those authors, giving $P_{female}$ = 0.381, 95\% CI = [.354, 0.409]. Together, these results suggest that our method of automatically assigning gender using Gender-API gives comparable result to hand-curated gender assignment, and that excluding names without clear gender information does not lead us to underestimate the proportion of women in our dataset.
+We validated this method by comparing it to a set of 2155 known author:gender pairs from the biomedical literature provided by Filardo et. al. \cite{Filardo2016} Filardo and colleagues manually determined the genders of the first authors for over 3000 papers by searching for authors’ photographs on institutional web pages or social media profiles like LinkedIn. We used our computational inference of gender for a subset of this data, which suggested $P_{female}$ = 0.373, 95\% CI = [0.350, 0.396], compared to the known gender, which gave $P_{female}$ = 0.360 (using the same bootstrap analysis, 95\% CI = [0.342, 0.379]) (S1 Fig C). Because Gender-API does not have information for a subset of names (43\% of unique names in our Biology dataset, representing 26.6\% of authors), these names are excluded from our analysis. In order to ensure that this was not skewing our analysis, we also determined the $P_{female}$ in Filardo et al.'s known gender dataset excluding those authors, giving $P_{female}$ = 0.381, 95\% CI = [.354, 0.409]. Together, these results suggest that our method of automatically assigning gender using Gender-API gives comparable result to hand-curated gender assignment, and that excluding names without clear gender information does not lead us to underestimate the proportion of women in our dataset.
 
-We began by analyzing the gender representation in primary publications from 1997 to 2014. Consistent with previous publications, women were substantially less likely to be in senior author positions than first author positions in publications labeled with the Biology (Bio) MeSH term (Last author, $P_{female}$ = 0.245, 95\% CI = [0.243, 0.247], First author, $P_{female}$ = 0.376, 95\% CI = [0.373, 0.378]). (Figure 1A, Table 1). We observed the same trend in papers labeled with the computational biology (comp) MeSH term, though the $P_{female}$ at every author position was 4-6  percentage points lower. An analysis of publications by year suggests that the gender gaps in both biology and computational biology are narrowing, but by less than 1 percentage point  per year (for bio, change in $P_{female}$ = 0.0035 / year, 95\% CI = [0.0030, 0.0040]. For comp, change in $P_{female}$ = 0.0049 / year, 95\%CI = [0.0041, 0.0057]). However, the discrepancy between biology and computational biology has been consistent over time (Figure 1B).
+We began by analyzing the gender representation in primary publications from 1997 to 2014. Consistent with previous publications, women were substantially less likely to be in senior author positions than first author positions in publications labeled with the Biology (Bio) MeSH term (Last author, $P_{female}$ = 0.245, 95\% CI = [0.243, 0.247], First author, $P_{female}$ = 0.376, 95\% CI = [0.373, 0.378]). (Fig 1A, Table 1). We observed the same trend in papers labeled with the computational biology (comp) MeSH term, though the $P_{female}$ at every author position was 4-6  percentage points lower. An analysis of publications by year suggests that the gender gaps in both biology and computational biology are narrowing, but by less than 1 percentage point  per year (for bio, change in $P_{female}$ = 0.0035 / year, 95\% CI = [0.0030, 0.0040]. For comp, change in $P_{female}$ = 0.0049 / year, 95\%CI = [0.0041, 0.0057]). However, the discrepancy between biology and computational biology has been consistent over time (Fig 1B).
+
+\begin{figure}[!h]
+  \caption{
+  A: Mean probability that an author in a given position is female for primary article indexed in Pubmed with the MeSH term Biology (black) or Computational Biology (grey). The bio dataset is inclusive of papers in the comp dataset. Error bars represent 95\% confidence intervals. 
+  B: Mean probability that an author is female for publications in a given year. Error bars represent 95\% confidence intervals. C: Mean probability that the first (F), second (S), penultimate (P) or other (O) author is female for publications where the last author is male ($P_{female} < 0.2$) or female ($P_{female} > 0.8$). Papers where the gender of the last author was uncertain or could not be determined were excluded. Error bars represent 95\% confidence intervals. }
+  \label{fig1}
+\end{figure}
 
 \begin{table}[]
 \centering
@@ -178,7 +185,7 @@ comp    & first         & 0.316 & 0.312        & 0.320        \\
 \end{tabular}
 \end{table}
 
-One possible explanation for the difference in male and female authorship position might be a difference in role models or mentors. If true, we would expect studies with a female principal investigator to be more likely to attract female collaborators. Conventionally in biology,  the last author on a publication is the principal investigator on the project. Therefore, we looked at two subsets of our data: publications with a female last author ($P_{female}$ > 0.8) and those with a male last author ($P_{female}$ < 0.2). We found that women were substantially more likely to be authors at every other position if the paper had a female last author than if the last author was male (Figure 1C, Table 2). It is possible that female trainees are be more likely to pursue computational biology if they have a mentor that is also female. Since women are less likely to be senior authors, this might reduce the proportion of women overall.
+One possible explanation for the difference in male and female authorship position might be a difference in role models or mentors. If true, we would expect studies with a female principal investigator to be more likely to attract female collaborators. Conventionally in biology,  the last author on a publication is the principal investigator on the project. Therefore, we looked at two subsets of our data: publications with a female last author ($P_{female}$ > 0.8) and those with a male last author ($P_{female}$ < 0.2). We found that women were substantially more likely to be authors at every other position if the paper had a female last author than if the last author was male (Fig 1C, Table 2). It is possible that female trainees are be more likely to pursue computational biology if they have a mentor that is also female. Since women are less likely to be senior authors, this might reduce the proportion of women overall.
 
 \begin{table}[]
 \centering
@@ -204,13 +211,25 @@ comp    & first           & 0.305 & 0.300        & 0.311          & 0.390 & 0.37
 \end{tabular}
 \end{table}
 
-Though MeSH terms enable sorting a large number of papers regardless of where they are published, the assignment of these terms is a manual process and may not be comprehensive for all publications. As another way to qualitatively examine gender differences in publishing, we examined different journals, since some journals specialize in computational papers, while others are more general. We looked at the 123  journals that had at least 1000 authors in our bio dataset, and determined $P_{female}$ for each journal separately (Figure 2A). Of these journals, 21 (14\%) have titles indicative of computational biology or bioinformatics, and these journals have substantially lower representation of female authors. The 3 journals with the lowest female representation and 6 out of the bottom 10 are all journals focused on studies using computational methods. Only 4 computational biology/bioinformatics journals are above the median of female representation.
+Though MeSH terms enable sorting a large number of papers regardless of where they are published, the assignment of these terms is a manual process and may not be comprehensive for all publications. As another way to qualitatively examine gender differences in publishing, we examined different journals, since some journals specialize in computational papers, while others are more general. We looked at the 123  journals that had at least 1000 authors in our bio dataset, and determined $P_{female}$ for each journal separately (Fig 2A). Of these journals, 21 (14\%) have titles indicative of computational biology or bioinformatics, and these journals have substantially lower representation of female authors. The 3 journals with the lowest female representation and 6 out of the bottom 10 are all journals focused on studies using computational methods. Only 4 computational biology/bioinformatics journals are above the median of female representation.
 
-One possible explanation might be that women are less likely to publish in high-impact journals, so we considered the possibility that the differences in the gender of authors that we observe could be the result of differences in impact factor between papers published in biology versus computational biology publications. We therefore compared the $P_{female}$ of authors in each journal with that journal’s 2014 impact factor (Figure 2B). There is a marginal but significant (p = 0.0025) negative correlation between impact factor and gender for the biology dataset (r2 = 0.06, 95\% CI = [0.15, 0.0078]) , consistent with previous studies. By contrast, there is no significant correlation between impact factor and $P_{female}$ in computational biology publications. Further, for journals that have articles labeled with the computational biology MeSH term, the $P_{female}$ for those articles is the same or lower than that for all biology publications in the same journal.
+\begin{figure}[!h]
+  \caption{
+  A: Mean probability that an author is female for every journal that had at least 1000 authors in our dataset. Grey bars represent journals that have the words “Bioinformatics,” “Computational,” “Computer,” “System(s),” or “­omic(s)” in their title. Vertical line represents the median for female author representation. See also S1 Table. B: Mean probability that an author is female for articles in the “Bio” dataset (black dot) or in the “Comp” dataset (open square) for each journal that had at least 1000 authors plotted against the journals’ 2014 impact factor. Journals that had computational biology articles are included in both datasets. Pearson’s correlation was calculated for each dataset independently. Bio: $r = ­0.246$, $95\% CI = [­0.391, ­0.088]$, $p = 0.0025$. Comp: $r = ­0.052$, $95\% CI = [­0.4458, 0.3592], p = 0.8106.$ }
+  \label{fig2}
+\end{figure}
+
+One possible explanation might be that women are less likely to publish in high-impact journals, so we considered the possibility that the differences in the gender of authors that we observe could be the result of differences in impact factor between papers published in biology versus computational biology publications. We therefore compared the $P_{female}$ of authors in each journal with that journal’s 2014 impact factor (Fig 2B). There is a marginal but significant (p = 0.0025) negative correlation between impact factor and gender for the biology dataset (r2 = 0.06, 95\% CI = [0.15, 0.0078]) , consistent with previous studies. By contrast, there is no significant correlation between impact factor and $P_{female}$ in computational biology publications. Further, for journals that have articles labeled with the computational biology MeSH term, the $P_{female}$ for those articles is the same or lower than that for all biology publications in the same journal.
 
 Taken together, these data suggest that the authors of computational biology papers are less likely to be women than the authors of biology papers generally. However, since Pubmed does not index computer science publications, we cannot compare computational biology to computer science. Instead, we turned to data from arXiv, a preprint repository for academic papers used frequently by quantitative fields like mathematics and physics. These preprint records cannot be directly compared to peer-reviewed publications indexed on pubmed, but a “quantitative biology” section was added to arXiv in 2003. There are relatively few papers preprints prior to 2007, so we compared preprints in “quantitative biology” to those in “computer science” from 2007-2016.
 
-Women were more likely to be authors in quantitative biology than in computer science in first, second, and middle author positions (Figure 3A, Table 3), though the conventions for determining author order are not necessarily the same in computer science. Nevertheless, women had higher representation in quantitative biology than in computer science for all years except 2009 (Figure 3B). Interestingly, there is a slight but significant (p < 0.05) increase in the proportion of female authors over time in quantitative biology, while there’s no significant increase in computer science preprints.
+Women were more likely to be authors in quantitative biology than in computer science in first, second, and middle author positions (Fig 3A, Table 3), though the conventions for determining author order are not necessarily the same in computer science. Nevertheless, women had higher representation in quantitative biology than in computer science for all years except 2009 (Fig 3B). Interestingly, there is a slight but significant (p < 0.05) increase in the proportion of female authors over time in quantitative biology, while there’s no significant increase in computer science preprints.
+
+\begin{figure}[!h]
+  \caption{
+  A: Mean probability that an author in a given position is female for all preprints in the arXiv quantitative biology (black) or computer science (grey) categories between 2007 and 2014. Error bars represent 95\% confidence intervals. B: Mean probability of authors being female in arXiv preprints in a given year. Error bars represent 95\% confidence intervals. Slopes were determined using linear regression. The slope for q­bio is slightly positive ($p < 0.5$), but the slope for cs is not. }
+  \label{fig3}
+\end{figure}
 
 \begin{table}[]
 \centering
@@ -362,47 +381,21 @@ Bonham KS, Stefan MI.
 \newblock {{gender-comp-bio: Pre-publication release}}.
 \newblock  [Internet]. Zenodo; 2016. \url{doi:10.5281/zenodo.60090}
 
-
-
-
-
 \end{thebibliography}
 
-\section*{Figures}
+\subsection*{Supporting Information}
+
 \begin{figure}[!h]
-  \caption{{\bf Figure 1}
-  A: Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black) or Computational Biology (grey). The bio dataset is inclusive of papers in the comp dataset. Error bars represent 95\% confidence intervals. B: Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black) or Computational Biology (grey). The bio dataset is inclusive of papers in the comp dataset. Error bars represent 95\% confidence intervals. C: Mean probability that an author is female for publications in a given year. Error bars represent 95\% confidence intervals. D: Mean probability that the first (F), second (S), penultimate (P) or other (O) author is female for publications where the last author is male ($P_{female}$ < 0.2) or female ($P_{female}$ > 0.8). Papers where the gender of the last author was uncertain or could not be determined were excluded. Error bars represent 95\% confidence intervals.}
-  \label{fig1}
+  \caption{
+  A: Number of primary publications per year indexed under the “Biology” MeSH term. B: Number of primary publications per year indexed with “Computational Biology” as a major MeSH term. C: Comparison of computational gender inference (black) with known genders (white) for the dataset from Filardo et. al. \cite{Filardo2016}. Grey represents the known proportion of female authors when excluding names for which the gender could not be computationally inferred. Error bars represent 95\% confidence intervals. }
+  \label{S1 Fig}
 \end{figure}
 
 \begin{figure}[!h]
-  \caption{{\bf Figure 2}
-  A: Mean probability that an author is female for every journal that had at least 1000 authors in our dataset. Grey bars represent journals that have the words “Bioinformatics,” “Computational,” “Computer,” “System(s),” or “-omic(s)” in their title. Vertical line represents the median for female author representation. See also S1 Table. B: Mean probability that an author is female for articles in the “Bio” dataset (black dot) or in the “Comp” dataset (open square) for each journal that had at least 1000 authors plotted against the journals’ 2014 impact factor. Journals that had computational biology articles are included in both datasets. An ordinary least squares regression was performed for each dataset. Bio: $m = -0.00264$, $P_{Z>|z|} = 0.0022$. Comp: $m = -0.0007893406044121227$, $P_{Z>|z|} = 0.568$.}
-  \label{fig2}
+  \caption{
+  $P_{female}$ for each journal with at least 1000 authors in the bio dataset. Journals identified as primarily computational are shaded grey.}
+  \label{S1 Table}
 \end{figure}
-
-\begin{figure}[!h]
-  \caption{{\bf Figure 3}
-  A: Mean probability that an author in a given position is female for all preprints in the arXiv quantitative biology (black) or computer science (grey) categories between 2007 and 2014. Error bars represent 95\% confidence intervals. B: Mean probability of authors being female in arXiv preprints in a given year. Error bars represent 95\% confidence intervals. Slopes were determined using ordinary least squares regression. The slope for q-bio is slightly positive (p < 0.05), but the slope for cs is not.}
-  \label{fig3}
-\end{figure}
-
-\begin{figure}[!h]
-  \caption{{\bf S1 Figure: Gender Inference Validation}
-  A: Number of primary publications per year indexed under the “Biology” MeSH term. B: Number of primary publications per year indexed with “Computational Biology” as a major MeSH term. C: Comparison of computational gender inference (black) with known genders (white) for the dataset from Filardo et. al. \cite{Filardo2016}. Grey represents the known proportion of female authors when excluding names for which the gender could not be computationally inferred. Error bars represent 95\% confidence intervals.}
-  \label{figS1}
-\end{figure}
-
-\begin{figure}[!h]
-  \caption{{\bf S2 Figure: Validation of PubMed Subsetting}
-  A: Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black), Computational Biology (gray) or for those articles with Biology \textit{but not} Computational biology (white). Error bars represent 95\% confidence intervals. B: Mean probability that an author is female for articles in the “Bio” dataset (black) in the “Comp” dataset (white), or for articles in the Bio \textit{but not} Comp (gray) for each journal that had at least 1000 authors plotted against the journals’ 2014 impact factor. Excluding computational publications from the biology dataset does not substantially alter the correlation between impact factor and $P_{female}$.}
-  \label{figS2}
-\end{figure}
-
-\subsection*{S1 Table: Proportion of Female Authors by Journal}
-
-$P_{female}$ for each journal with at least 1000 authors in the bio dataset. Journals identified as primarily computational are shaded grey.
-Acknowledgements
 
 \section*{Acknowledgements}
 The authors would like to thank Markus Perl for the free use of Gender-API - contact\@gender-api.com; Casper Strømgren for the free use of genderize.io info\@genderize.io; Giovanni Filardo for sharing data \cite{Filardo2016}; Johanna Gutlerner, Marshall Thomas, Diane Lam, and other members of the Curriculum Fellows Program (CFP) at Harvard Medical School (HMS) for helpful feedback and discussions; and
