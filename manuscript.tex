@@ -106,7 +106,8 @@
 \usepackage{graphicx}
 
 \graphicspath{ {figures/} }
-
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
 
 \begin{document}
 \vspace*{0.2in}
@@ -130,7 +131,7 @@ Melanie I. Stefan\textsuperscript{2},
 \bigskip
 
 % Use the asterisk to denote corresponding authorship and provide email address in note below.
-* kevin_bonham\@hms.harvard.edu
+* kevin\_bonham\@hms.harvard.edu
 
 \section*{Abstract}
 While women are generally underrepresented in STEM fields, there are noticeable differences between fields. For instance, the gender ratio in biology is more balanced than in computer science. We were interested in how this difference is reflected in the interdisciplinary field of computational/quantitative biology. To this end, we examined the proportion of female authors in publications from the PubMed and arXiv databases. There are fewer female authors on research papers in computational biology, as compared to biology in general. This is true across authorship position, year, and journal impact factor. A comparison with arXiv shows that quantitative biology papers have a higher ratio of female authors than computer science papers, placing computational biology in between its two parent fields in terms of gender representation. Both in biology and in computational biology, a female last author increases the probability of other authors on the paper being female, pointing to a potential role of female PIs in influencing the gender balance.
@@ -149,7 +150,7 @@ In order to determine if there is a difference in the gender of authors in compu
 
 To determine the gender of authors, we used the web service Gender-API.com, which curates a database of first names and associated genders from government records as well as social media profiles. Gender-API searches provide information on the likely gender as well as confidence in the estimate based on the number of times a name appears in the database. We used bootstrap analysis to estimate the probability ($P_{female}$) that an author in a particular dataset is female as well as a 95\% confidence interval (see Materials and Methods).
 
-We validated this method by comparing it to a set of 2155 known author:gender pairs from the biomedical literature provided by Filardo et. al.[12] Filardo and colleagues manually determined the genders of the first authors for over 3000 papers by searching for authors’ photographs on institutional web pages or social media profiles like LinkedIn. We compared the results obtained from our method of computational inference of gender for a subset of this data (see Materials and Methods), to the known gender composition of this author set. Infering author gender using Gender-API data suggested that $P_{female} = 0.373 \pm 0.023$ (Supplementary Figure 1C, black bar). Because the actual gender of each of these authors is known, we could also calculate the actual $P_{female}$. Using the same bootstrap method on actual gender (known female authors were assigned $P_{female} = 1$, known male authors were assigned $P_{female} = 0$), we determined that the real $P_{female} = 0.360 \pm 0.018$ (Supplementary Figure 1C, white bar).
+We validated this method by comparing it to a set of 2155 known author:gender pairs from the biomedical literature provided by Filardo et. al.\cite{Filardo2016}Filardo and colleagues manually determined the genders of the first authors for over 3000 papers by searching for authors’ photographs on institutional web pages or social media profiles like LinkedIn. We compared the results obtained from our method of computational inference of gender for a subset of this data (see Materials and Methods), to the known gender composition of this author set. Infering author gender using Gender-API data suggested that $P_{female} = 0.373 \pm 0.023$ (Supplementary Figure 1C, black bar). Because the actual gender of each of these authors is known, we could also calculate the actual $P_{female}$. Using the same bootstrap method on actual gender (known female authors were assigned $P_{female} = 1$, known male authors were assigned $P_{female} = 0$), we determined that the real $P_{female} = 0.360 \pm 0.018$ (Supplementary Figure 1C, white bar).
 
 Unfortunately, 43\% of names used to query to Gender-API did not have associated gender information. These names, representing 26.6\% of authors, were therefore excluded from our analysis. In order to ensure that this was not systematically skewing our results, we also determined the $P_{female}$ in Filardo et al.'s known gender dataset excluding those authors with names that were not associated with a Gender-API record, giving $P_{female} = 0.381 \pm .027$ (Supplementary Figure 1C, white bar). Together, these results suggest that our method of automatically assigning gender using Gender-API gives comparable results to human-validated gender assignment, and that excluding names without clear gender information does not lead us to underestimate the proportion of women in our dataset.
 
@@ -286,22 +287,22 @@ We used ordinary least squares regression analyses on IF and $P_{female}$ using 
 Ghiasi G, Larivi{\`e}re V, Sugimoto CR.
 \newblock {{O}n the Compliance of Women Engineers with a Gendered Scientific System}.
 \newblock PLoS ONE. 2015 10(12):e0145931.
- 
+
 \bibitem{Macaluso2016}
 Macaluso B, Larivi{\`e}re V, Sugimoto T, Sugimoto CR.
 \newblock {{I}s Science Built on the Shoulders of Women? A Study of Gender Differences in Contributorship}.
 \newblock Academic Medicine. 2016  91(8):1136–11420.
 
 \bibitem{Grunspan2016}
-Grunspan DZ, Eddy SL, Brownell SE, Wiggins BL, Crowe AJ, Goodreau SM. 
+Grunspan DZ, Eddy SL, Brownell SE, Wiggins BL, Crowe AJ, Goodreau SM.
 \newblock {{M}ales Under-Estimate Academic Performance of Their Female Peers in Undergraduate Biology Classrooms.}.
 \newblock PLoS ONE. 2016 11:e0148405.
-  
+
 \bibitem{MacNell2014}
 MacNell L, Driscoll A, Hunt AN.
 \newblock {{W}hat’s in a Name: Exposing Gender Bias in Student Ratings of Teaching.}.
 \newblock   Innovative Higher Education. 2014 40: 291–303.
-  
+
 \bibitem{Milkman2015}
 Milkman KL, Akinola M, Chugh D.
 \newblock {{W}hat happens before? {A} field experiment exploring how pay and representation differentially shape bias on the pathway into organizations.}.
@@ -313,7 +314,7 @@ Moss-Racusin CA, Dovidio JF, Brescoll VL, Graham MJ, Handelsman J.
 \newblock  Proc Natl Acad Sci U S A. 2012 109:16474–16479.
 
 \bibitem{Lariviere2013}
-Larivi{\`e}re V, Ni C, Gingras Y, Cronin B, Sugimoto CR. 
+Larivi{\`e}re V, Ni C, Gingras Y, Cronin B, Sugimoto CR.
 \newblock {{B}ibliometrics: global gender disparities in science.}.
 \newblock  Nature. 2013 504: 211–213.
 
@@ -339,7 +340,7 @@ Fara P.
 \newblock Nature. 2013  495: 43–44.
 
 \bibitem{Handley2015}
-Handley IM, Brown ER, Moss-Racusin CA, Smith JL. 
+Handley IM, Brown ER, Moss-Racusin CA, Smith JL.
 \newblock {{Q}uality of evidence revealing subtle gender biases in science is in the eye of the beholder.}.
 \newblock  Proc Natl Acad Sci U S A.  2015 112:13201–13206.
 
@@ -350,7 +351,7 @@ National Science Foundation, National Center for Science and Engineering Statist
 \newblock  [Internet]. 2015 Available: \url{http://www.nsf.gov/statistics/wmpd/}.
 
 \bibitem{Filardo2016}
- Filardo G, da Graca B, Sass DM, Pollock BD, Smith EB, Martinez MA-M. 
+ Filardo G, da Graca B, Sass DM, Pollock BD, Smith EB, Martinez MA-M.
 \newblock {{}Trends and comparison of female first authorship in high impact medical journals: observational study (1994-2014).}.
 \newblock BMJ. 2016 352:i847.
 
@@ -370,7 +371,7 @@ Bonham KS, Stefan MI.
 \newblock {{gender-comp-bio: Pre-publication release}}.
 \newblock  [Internet]. Zenodo; 2016. \url{doi:10.5281/zenodo.60090}
 
- 
+
 
 
 
