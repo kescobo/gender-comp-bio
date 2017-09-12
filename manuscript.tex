@@ -14,6 +14,8 @@
 % cite package, to clean up citations in the main text. Do not remove.
 \usepackage{cite}
 
+\bibliographystyle{unsrt}
+
 \usepackage{url}
 
 % Use nameref to cite supporting information files (see Supporting Information section for more info)
@@ -299,23 +301,8 @@ Author positions were assigned based on the number of total authors. In papers w
 \subsection*{Regression Analysis}
 We used ordinary least squares regression analyses on IF and $P_{female}$ using the the GLM.jl package for the julia programming language. Correlations were considered significant if $P_{Z > |z|} < 0.05$.
 
-
 \begin{thebibliography}{10}
 
-\bibitem{Mihaljevic-Brandt2016}
-  Mihaljevi{\'c}-Brandt H, Santamar{\'i}a L, Tullney M.
-\newblock {{T}he Effect of Gender in the Publication Patterns in Mathematics}.
-\newblock PLoS ONE. 2016 11(10):e0165367.
-
-\bibitem{Ghiasi2015}
-Ghiasi G, Larivi{\`e}re V, Sugimoto CR.
-\newblock {{O}n the Compliance of Women Engineers with a Gendered Scientific System}.
-\newblock PLoS ONE. 2015 10(12):e0145931.
-
-\bibitem{Macaluso2016}
-Macaluso B, Larivi{\`e}re V, Sugimoto T, Sugimoto CR.
-\newblock {{I}s Science Built on the Shoulders of Women? A Study of Gender Differences in Contributorship}.
-\newblock Academic Medicine. 2016  91(8):1136–11420.
 
 \bibitem{Grunspan2016}
 Grunspan DZ, Eddy SL, Brownell SE, Wiggins BL, Crowe AJ, Goodreau SM.
@@ -346,6 +333,11 @@ Larivi{\`e}re V, Ni C, Gingras Y, Cronin B, Sugimoto CR.
 West JD, Jacquet J, King MM, Correll SJ, Bergstrom CT.
 \newblock {{T}he role of gender in scholarly authorship.}.
 \newblock PLoS One. 2013 8:e66212.
+
+\bibitem{Mihaljevic-Brandt2016}
+  Mihaljevi{\'c}-Brandt H, Santamar{\'i}a L, Tullney M.
+\newblock {{T}he Effect of Gender in the Publication Patterns in Mathematics}.
+\newblock PLoS ONE. 2016 11(10):e0165367.
 
 \bibitem{King2016}
 King MM, Bergstrom CT, Correll SJ, Jacquet J, West JD.
@@ -379,6 +371,16 @@ National Science Foundation, National Center for Science and Engineering Statist
 \newblock {{}Trends and comparison of female first authorship in high impact medical journals: observational study (1994-2014).}.
 \newblock BMJ. 2016 352:i847.
 
+\bibitem{Ghiasi2015}
+Ghiasi G, Larivi{\`e}re V, Sugimoto CR.
+\newblock {{O}n the Compliance of Women Engineers with a Gendered Scientific System}.
+\newblock PLoS ONE. 2015 10(12):e0145931.
+
+\bibitem{Macaluso2016}
+Macaluso B, Larivi{\`e}re V, Sugimoto T, Sugimoto CR.
+\newblock {{I}s Science Built on the Shoulders of Women? A Study of Gender Differences in Contributorship}.
+\newblock Academic Medicine. 2016  91(8):1136–11420.
+
 
 \bibitem{Bonham2016}
 Bonham KS, Stefan MI.
@@ -400,24 +402,30 @@ Bonham KS, Stefan MI.
 \subsection*{Supporting Information}
 
 \begin{figure}[!h]
-  \caption{
-  A: Number of primary publications per year indexed under the “Biology” MeSH term. B: Number of primary publications per year indexed with “Computational Biology” as a major MeSH term. C: Comparison of computational gender inference (black) with known genders (white) for the dataset from Filardo et. al. \cite{Filardo2016}. Grey represents the known proportion of female authors when excluding names for which the gender could not be computationally inferred. Error bars represent 95\% confidence intervals.}
+  \caption*{
+  \textbf{S1 Fig.} A: Number of primary publications per year indexed under the “Biology” MeSH term. B: Number of primary publications per year indexed with “Computational Biology” as a major MeSH term. C: Comparison of computational gender inference (black) with known genders (white) for the dataset from Filardo et. al. \cite{Filardo2016}. Grey represents the known proportion of female authors when excluding names for which the gender could not be computationally inferred. Error bars represent 95\% confidence intervals.}
   \label{S1 Fig}
 \end{figure}
 
 \begin{figure}[!h]
-  A: Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black), Computational Biology (gray) or for those articles with Biology \textit{but not} Computational biology (white). Error bars represent 95\% confidence intervals. B: Mean probability that an author is female for articles in the “Bio” dataset (black) in the “Comp” dataset (white), or for articles in the Bio \textit{but not} Comp (gray) for each journal that had at least 1000 authors plotted against the journals’ 2014 impact factor. Excluding computational publications from the biology dataset does not substantially alter the correlation between impact factor and $P_{female}$.}
+  \caption*{
+  \textbf{S2 Fig.} A: Mean probability that an author in a given position is female for primary articles indexed in Pubmed with the MeSH term Biology (black), Computational Biology (gray) or for those articles with Biology \textit{but not} Computational biology (white). Error bars represent 95\% confidence intervals. B: Mean probability that an author is female for articles in the “Bio” dataset (black) in the “Comp” dataset (white), or for articles in the Bio \textit{but not} Comp (gray) for each journal that had at least 1000 authors plotted against the journals’ 2014 impact factor. Excluding computational publications from the biology dataset does not substantially alter the correlation between impact factor and $P_{female}$.}
   \label{S2 Fig}
 \end{figure}
 
 \begin{figure}[!h]
-  \caption{
-  $P_{female}$ for each journal with at least 1000 authors in the bio dataset. Journals identified as primarily computational are shaded grey.}
+  \caption*{
+  \textbf{S1 table. }$P_{female}$ for each journal with at least 1000 authors in the bio dataset. Journals identified as primarily computational are shaded grey.}
   \label{S1 Table}
 \end{figure}
 
+\begin{figure}[!h]
+  \caption*{
+  \textbf{sample\_name\_data.json}: A subset of 1000 name:gender pairs, downloaded from GenderAPI.com. Permission to share these data was granted by Markus Perl. For additional information, e-mail contact\@gender-api.com}
+  \label{sample_name_data}
+\end{figure}
+
 \section*{Acknowledgements}
-The authors would like to thank Markus Perl for the free use of Gender-API - contact\@gender-api.com; Casper Strømgren for the free use of genderize.io info\@genderize.io; Giovanni Filardo for sharing data \cite{Filardo2016}; Johanna Gutlerner, Marshall Thomas, Diane Lam, and other members of the Curriculum Fellows Program (CFP) at Harvard Medical School (HMS) for helpful feedback and discussions; and
-The HMS CFP and Educational Laboratory for resources and mentorship.
+The authors would like to thank Markus Perl for the free use of Gender-API - contact\@gender-api.com; Casper Strømgren for the free use of genderize.io - info\@genderize.io; Giovanni Filardo for sharing data \cite{Filardo2016}; Johanna Gutlerner, Marshall Thomas, Diane Lam, and other members of the Curriculum Fellows Program (CFP) at Harvard Medical School (HMS) for helpful feedback and discussions; and The HMS CFP and Educational Laboratory for resources and mentorship.
 
 \end{document}
